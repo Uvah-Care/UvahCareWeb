@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express')
 const db = require('./config/mongoose');
+const Razorpay = require('razorpay');
 
 const port = process.env.PORT || 8080;
 const app = express() //launching the server
@@ -31,6 +32,7 @@ app.use(express.static("assets"));
 // db.once('open' , function (){ //if connected sucessfully
 //     console.log("sucessfully connected to database...")
 // });
+
 
 //new schema for user details
 // const kittySchema = new mongoose.Schema(
