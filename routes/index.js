@@ -8,4 +8,5 @@ router.get('/contact', homeController.contact);
 router.get('/about', homeController.about);
 router.get('/experts', homeController.experts);
 router.use('/join',require('./join'));
+router.use('/login',require('./login'));
 module.exports = router; 
