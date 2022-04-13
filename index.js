@@ -1,10 +1,25 @@
 const path = require('path')
 const express = require('express')
 const db = require('./config/mongoose');
+
 const Razorpay = require('razorpay');
+const passport = require('passport');
+const session = require('express-session');
 
 const port = process.env.PORT || 8080;
 const app = express() //launching the server
+
+app.use(express.json()) // middleware:->parses incomming json request to req.body
+app.use(session({
+  secret: 'uvah-care',
+  resave: false,
+  saveUninitialized: true ,
+  // cookie: {secure: true, maxAge: 60*60*1000}
+}));
+
+app.use(express.urlencoded({extended:false}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // const nodemailer = require('nodemailer')
 // const Razorpay = require('razorpay')
@@ -18,7 +33,6 @@ const pathname=path.join(__dirname + "/views");
 //   key_secret: 'JA9J4N3QLEcTTouuDfytaZYI',
 // });
 
-app.use(express.urlencoded({extended:false}));
 app.use(express.static("assets"));
 
 
@@ -55,7 +69,6 @@ app.use(express.static("assets"));
 //     timestamps: true
 //   });
 
-app.use(express.json()) // middleware:->parses incomming json request to req.body
 app.set('view engine', 'ejs');
 app.set('views', './views');
 

@@ -11,15 +11,16 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    console.log(profile)  
+    // console.log(profile)  
     return done(null, profile);
   }
 ));
 
-passport.deserializeUser(function(user,done){
-    done(null,user);
-})
-
 passport.serializeUser(function(user,done){
-    done(null, user);
-})
+  done(null, user);
+});
+
+passport.deserializeUser(function(user,done){
+  // console.log(user)
+    done(null,user);
+});

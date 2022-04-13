@@ -1,5 +1,5 @@
 const Razorpay = require('razorpay');
-const RegForm = require('../models/form-response');
+const RegForm = require('../models/form-response-model');
 
 var instance = new Razorpay({
     key_id: 'rzp_test_cnNgV26a1zX99m',
