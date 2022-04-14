@@ -20,21 +20,17 @@ app.use(session({
 app.use(express.urlencoded({extended:false}));
 app.use(passport.initialize());
 app.use(passport.session());
+// const pathname=path.join(__dirname + "/views");
+
+app.use(express.static("assets"));
 
 // const nodemailer = require('nodemailer')
 // const Razorpay = require('razorpay')
-// const log = console.log
-
-
-const pathname=path.join(__dirname + "/views");
 
 // var instance = new Razorpay({
 //   key_id: 'rzp_test_cnNgV26a1zX99m',
 //   key_secret: 'JA9J4N3QLEcTTouuDfytaZYI',
 // });
-
-app.use(express.static("assets"));
-
 
 // //...mongodb connection...
 // const mongoose=require('mongoose')  //require library
