@@ -1,24 +1,33 @@
 const Razorpay = require('razorpay');
 const RegForm = require('../models/form-response-model');
+const User = require('../models/user-model');
 
 var instance = new Razorpay({
     key_id: 'rzp_test_cnNgV26a1zX99m',
     key_secret: 'JA9J4N3QLEcTTouuDfytaZYI',
 });
-  
+
 
 module.exports.registerForm = async function(req,res){
-    // let x = await RegForm.findOne({email: 
-    //     "hello@mail.com"});
-    // console.log(x);
     return res.render('join');
 }
 
-module.exports.register = async function(req,res){
-    // console.log(req.body);
-    // await RegForm.create(req.body);
-    console.log('form submitted--> data registered');
-    return res.redirect('/join/pay');
+// module.exports.register = async function(req,res){
+//     //Save User Data Here(Create New User)
+//     // let new_user = await User.create({
+//     //     name: req.body.name,
+//     //     email: req.body.email,
+//     //     password: "hello-12345!", //temperary password
+//     // });
+//     // await RegForm.create(req.body);
+//     console.log('form submitted--> user registered: ',req.user);
+//     res.redirect('/login/check');
+//     // return res.redirect('/join/pay');
+// }
+
+module.exports.payment = async function(req,res){
+    // console.log("order request id",req.body)
+    res.render('razorpay',{user_info: req.user});
 }
 
 module.exports.create_payment_order= async function(req,res){
@@ -47,11 +56,47 @@ module.exports.verify_payment= async function(req,res){
     var response = {"signatureIsValid":"false"}
     if(expectedSignature === req.body.response.razorpay_signature)
         response={"signatureIsValid":"true"}
+    
+    try{
+        let f_user = await User.findOne({email: req.user.email});
+        if(f_user.payment_records){
+            f_user.payment_records.push(
+                {
+                    order_id: req.body.response.razorpay_order_id,
+                    payment_id: req.body.response.razorpay_payment_id,
+                }
+            )
+        }
+        else{
+            f_user.payment_records = [{
+                order_id: req.body.response.razorpay_order_id,
+                payment_id: req.body.response.razorpay_payment_id,
+            }];
+        }
+        await f_user.save();
+    }
+    catch(error){
+        console.log('error in updating user: ',error);
+    }
     res.send('Payment Verified');
 }
 
-module.exports.payment = async function(req,res){
-//     // console.log("order request id",req.body)
-
-    res.render('razorpay');
-}
+// module.exports.successful_payment = async function(req,res){
+//     console.log(req.body);
+//     console.log(res.body);
+//     console.log(res.razorpay_payment_id);
+//     console.log(res.razorpay_order_id);
+//     console.log(res.razorpay_signature);
+//     let body=res.razorpay_order_id + "|" + res.razorpay_payment_id;
+   
+//     var crypto = require("crypto");
+//     var expectedSignature = crypto.createHmac('sha256', 'WDF7fn4fTm7XyuZum5eZAjm0')
+//                                      .update(body.toString())
+//                                      .digest('hex');
+//     // var response = {"signatureIsValid":"false"}
+//     console.log(expectedSignature, res.razorpay_signature);
+//     if(expectedSignature !== res.razorpay_signature)
+//         res.sendStatus(401);
+    
+//     res.redirect('/user/profile');
+// }

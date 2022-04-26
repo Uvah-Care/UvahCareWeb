@@ -5,13 +5,172 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <link rel="stylesheet" href="/css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <h1>payment page</h1>
-    <h3>amount : 500</h3>
-    <button id="rzp-button1">Pay</button>
-    <script src="."></script>
+<body class="is-preload landing">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <header id="header">
+            <h1 id="logo">
+                <img class="logo-image" src="/images/Uvah care logo wb1-01.png" alt>
+                <a href="/">UVAH CARE</a>
+            </h1>
+            <nav id="nav">
+                <ul>
+                <li><a href="/">Home</a></li>
+                    <!-- <li>
+                    <a href="#">Layouts</a>
+                    <ul>
+                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                        <li><a href="no-sidebar.html">No Sidebar</a></li>
+                        <li>
+                        <a href="#">Submenu</a>
+                        <ul>
+                            <li><a href="#">Option 1</a></li>
+                            <li><a href="#">Option 2</a></li>
+                            <li><a href="#">Option 3</a></li>
+                            <li><a href="#">Option 4</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </li> -->
+                <li><a href="/experts">Experts</a></li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/contact">Contact us</a></li>
+                <!-- <li><a href="./join.html" class="button primary">Join Us</a></li> -->
+                </ul>
+            </nav>
+        </header>
+
+        <div id="main" class="wrapper style3">
+            <div class="container">
+                <header class="major">
+                    <h2>Payment</h2>
+                    <p>Do it for the sake of your mind and body</p>
+                </header>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>item</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Uvah Care 1 month Subscription</td>
+                                <td>499.00</td>
+                            </tr>
+                            <!-- <tr>
+                                <td>Item 2</td>
+                                <td>Vis ac commodo adipiscing arcu aliquet.</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 3</td>
+                                <td> Morbi faucibus arcu accumsan lorem.</td>
+                                <td>29.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 4</td>
+                                <td>Vitae integer tempus condimentum.</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 5</td>
+                                <td>Ante turpis integer aliquet porttitor.</td>
+                                <td>29.99</td>
+                            </tr> -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td>499.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <ul class="actions row">
+                        <li class="col-3"><button id="rzp-button1" class="button primary fit">Pay</button></li>
+                        <!-- <li><input type="reset" value="Reset" /></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- show reciept here -->
+        <!-- <h1>payment page</h1>
+        <h3>amount : 500</h3>
+        <button id="rzp-button1">Pay</button> -->
+
+        
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-info">
+            <div class="location">
+                <h3>
+                <a>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Location
+                </a>
+                </h3>
+                <p>Office 16 , 3rd Floor , DTU-IIF, Delhi Technological University, New Delhi, Delhi 110042</p>
+            </div>
+            <div class="mail">
+                <h3>
+                <a href="mailto:healthapp.innovation@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    Email
+                </a>
+                </h3>
+                <p>healthapp.innovation@gmail.com</p>
+            </div>
+        
+            <div class="Phone">
+                <h3>
+                <a href="tel:+918287804475">
+                    <i class="fa-solid fa-phone"></i>
+                    Phone
+                </a>
+                </h3>	
+                <p>+91 8287804475</p>
+            </div>	
+            </div>
+            <div class="footer-social">
+            <h2>Social</h2>
+            <ul class="icons">
+                <li><a href="https://twitter.com/CareUvah?t=jb3rWQa-ldpURupJmfnQgw&s=08" class="icon"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/pages/category/Medical---Health/UvahCare-113228164180677/" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                <li><a href="https://www.instagram.com/uvah_care/" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://youtube.com/channel/UCAAxT_qT81CNMlY5kEhZZeA" class="icon"><i class="fa-brands fa-youtube"></i></a></li>
+                <!-- <li><a href="#" class="icon"><i class="fa-brands fa-github"></i></a></li> -->
+                <!-- <li><a href="#" class="icon"><i class="fa-solid fa-envelope"></i></a></li> -->
+            </ul>
+            <ul class="copyright">
+                <li>&copy; UVAH CARE. All rights reserved.</li>
+            </ul>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.dropotron.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/browser.min.js"></script>
+    <script src="/js/breakpoints.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+    <!-- RazorPay payment script   -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         var orderId ;
@@ -43,13 +202,14 @@
             "description": "Test Transaction",
             "image": "/images/Uvah care logo wb1-01.png",
             "order_id": orderId , //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            "handler": function (response){
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature);
+            // "callback_url": "/join/after-payment",
+            "handler": function (response){ //if payment is complete 
+                // alert(response.razorpay_payment_id);
+                // alert(response.razorpay_order_id);
+                // alert(response.razorpay_signature);
                 alert('Payment complete');
                 var settings = {
-                    "url": "/api/payment/verify",
+                    "url": "/join/verify-payment",
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
@@ -60,6 +220,7 @@
                 $.ajax(settings).done(function (response) {
                       alert(JSON.stringify(response));
                 })
+                // response.redirect('/user/profile');
             },
             "prefill": {
                 "name": "Gaurav Kumar",
@@ -74,15 +235,15 @@
             }
         };
         var rzp1 = new Razorpay(options);
-        rzp1.on('payment.failed', function (response){
-                alert(response.error.code);
-                alert(response.error.description);
-                alert(response.error.source);
-                alert(response.error.step);
-                alert(response.error.reason);
-                alert(response.error.metadata.order_id);
-                alert(response.error.metadata.payment_id);
-        });
+        // rzp1.on('payment.failed', function (response){
+        //         alert(response.error.code);
+        //         alert(response.error.description);
+        //         alert(response.error.source);
+        //         alert(response.error.step);
+        //         alert(response.error.reason);
+        //         alert(response.error.metadata.order_id);
+        //         alert(response.error.metadata.payment_id);
+        // });
         document.getElementById('rzp-button1').onclick = function(e){
             rzp1.open();
             e.preventDefault();

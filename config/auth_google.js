@@ -20,10 +20,11 @@ passport.use(new GoogleStrategy({
     }
     else{
       //user not present in database
-      let new_user = User.create({
+      let new_user = await User.create({
         name: profile.displayName,
         email: profile.email,
-        password: "hello-12345!", //temperary password
+        password: "UVAHCARE-123", //temperary password
+        payment: false
       });
       done(null, new_user);
     }

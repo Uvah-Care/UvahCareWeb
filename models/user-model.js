@@ -14,6 +14,13 @@ const UserSchema = new mongoose.Schema(
         password:{
             type:String,
             require: true,
+        },
+        payment:{
+            type:Boolean,
+            require: true,
+        },
+        payment_records:{
+            type:Array
         }
     },
     {

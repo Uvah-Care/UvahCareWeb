@@ -5,6 +5,7 @@ const db = require('./config/mongoose');
 const Razorpay = require('razorpay');
 const passport = require('passport');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 8080;
 const app = express() //launching the server
@@ -17,7 +18,8 @@ app.use(session({
   // cookie: {secure: true, maxAge: 60*60*1000}
 }));
 
-app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 // const pathname=path.join(__dirname + "/views");

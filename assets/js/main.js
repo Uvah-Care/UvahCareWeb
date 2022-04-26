@@ -127,6 +127,26 @@
 				});
 
 		}
+	
+	// Navbar
+		// var $navbar = $('body.landing #header');
+		// $(window).scroll(function (event) {
+		// 	var scroll = $(window).scrollTop();
+		// 	if(scroll<=80){
+		// 		$navbar.css({
+					
+		// 			"background": "-webkit-gradient(linear, 50% 0%, -30% 100%, from(rgb(0 0 0 / 0%)), to(rgb(245 254 255)))", 
+		// 			// "background-color":"transparent",
+		// 			"color": "aliceblue"
+		// 		});
+		// 	}
+		// 	else{
+		// 		$navbar.css({
+		// 			"background-color":"",
+		// 			"color":""
+		// 		});
+		// 	}
+		// });
 
 	// Spotlights.
 		var $spotlights = $('.spotlight');
@@ -246,8 +266,8 @@
 		var slideHeight =  $(".slider ul li").height();
 		var slideUlWidth =  slideCount * slideWidth;
 		
-		$(".slider").css({"max-width":slideWidth, "height": slideHeight});
-		$(".slider ul").css({"width":slideUlWidth, "margin-left": - slideWidth });
+		$(".slider").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
+		$(".slider ul").css({"width":slideUlWidth, "margin-left": (- slideWidth + 25) });
 		$(".slider ul li:last-child").prependTo($(".slider ul"));
 		
 		function moveLeft() {

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/join.css">
-		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
+  </head>
    
 <body class="is-preload landing">
   <div id="page-wrapper">
-
     <!-- Header -->
     <header id="header">
       <h1 id="logo">
@@ -45,97 +43,48 @@
       </nav>
     </header>
 
-    <!-- form  -->
-    <div class="container">
-      <div class="form-container" >
-        <div class="title">Registration</div>
-        <div class="content">
-          <!-- form -->
+    <div id="main" class="wrapper style3">
+      <div class="container">
+        <header class="major">
+          <h2>Sign Up</h2>
+          <p>Join our commuinity for the fitness of your mind and body</p>
+        </header>
+        <section>
+          <!-- <h3>Form</h3> -->
           <form action="/join/form-register" method="post">
-            <div class="user-details">
-              <div class="input-box">
-                <span class="details">Full Name</span>
-                <input type="text" name="name" placeholder="Enter your name" required>
+            <div class="row aln-center aln-middle gtr-uniform gtr-75">
+              <div class="row aln-center aln-middle gtr-uniform gtr-75">
+                <div class="col-7 col-12-xsmall">
+                  <input type="text" name="name" id="name" value="" placeholder="Name" required/>
+                </div>
+                <div class="col-7 col-12-xsmall">
+                  <input type="email" name="email" id="email" value="" placeholder="Email" required/>
+                </div>
+                
+                <div class="col-7 col-12-xsmall">
+                  <input type="password" name="password" id="password" value="" placeholder="Password" required minlength="8"/>
+                </div>
+                <div class="col-7 col-12-xsmall">
+                  <input type="password" name="confirm_password" id="confirm_password" value="" placeholder="Confirm password" required minlength="8"/>
+                  <span id='message'></span>
+                </div>
               </div>
-              <div class="input-box">
-                <span class="details">Age</span>
-                <input type="number" name="age" placeholder="Enter your age" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Email</span>
-                <input type="email" name="email" placeholder="Enter your email" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Phone Number</span>
-                <input type="tel" name="ph_number" placeholder="Enter your number" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Profession </span>
-                <input type="text" name="profession" placeholder="Enter your profession " required>
-              </div>
-              <!-- <div class="input-box">
-                <span class="details">Your 2022 health resolution</span>
-                <input type="text" placeholder="Enter your resolution" required>
-              </div> -->
-              <!-- <div class="input-box">
-                <span class="details">When do you wake up in morning</span>
-                <input type="text" placeholder="Enter your waking up timing" required>
-              </div> -->
-              <div class="input-box">
-                <span class="details">When do you want to wake up</span>
-                <input type="text" name="wakeUpNow" placeholder="Enter your desired waking up time" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Your 2022 goals</span>
-                <input type="text" name="goals" placeholder="Goals" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Expectations from the session </span>
-                <input type="text" name="expectations" placeholder="Enter your Expectations" required>
-              </div>
-              <div class="input-box">
-                <span class="details">What are you willing to sacrifice to achi eve healthy routine</span>
-                <input type="text" name="sacrifice" placeholder="Enter your resolution" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Do you have any medical history/problems or dietry restrictions?</span>
-                <input type="text" name="medicalHistory" placeholder="Medical history" required>
-              </div>
-              <div class="input-box">
-                <span class="details">Your questions for our expert</span>
-                <input type="text" name="otherquestions" placeholder="Your doubts" required>
-              </div>
-            </div>
-            <div class="gender-details">
-              <input type="radio" name="gender" value="male" id="dot-1">
-              <input type="radio" name="gender" value="female" id="dot-2">
-              <input type="radio" name="gender" value="other" id="dot-3">
-              <span class="gender-title">Gender</span>
-              <div class="category">
-                <label for="dot-1">
-                <span class="dot one"></span>
-                <span class="gender">Male</span>
-              </label>
-              <label for="dot-2">
-                <span class="dot two"></span>
-                <span class="gender">Female</span>
-              </label>
-              <label for="dot-3">
-                <span class="dot three"></span>
-                <span class="gender">Prefer not to say</span>
-                </label>
-              </div>
-            </div>
-            <div class="button hover-color">
               
-              <input class="main-color" type="submit" value="Register">
-
+                <a href="/login/google" class="col-3 col-12-xsmall align-center">
+                  <h3>SIGN UP WITH GOOGLE</h3>
+                  <img src="/images/Google.png" alt="">
+                </a>
+          
+                <ul class="actions col-12">
+                  <li><input type="submit" id="submit" value="Sign Up" class="primary" /></li>
+                  <!-- <li><input type="reset" value="Reset" /></li> -->
+                </ul>
+              </div>
             </div>
           </form>
-        </div>
+        </section>    
       </div>
     </div>
-
     <!-- Footer -->
     <footer id="footer">
       <div class="footer-info">
@@ -157,7 +106,7 @@
           </h3>
           <p>healthapp.innovation@gmail.com</p>
         </div>
-
+  
         <div class="Phone">
           <h3>
             <a href="tel:+918287804475">
@@ -184,7 +133,7 @@
         </ul>
       </div>
     </footer>
-  <div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/jquery.min.js"></script>
@@ -195,6 +144,19 @@
   <script src="js/breakpoints.min.js"></script>
   <script src="js/util.js"></script>
   <script src="js/main.js"></script>
-
+  <script>
+    $('#password, #confirm_password').on('keyup', function () {
+      let $submitBtn = $("#form input[type='submit']");
+      if ($('#password').val() == $('#confirm_password').val()) {
+        $('#message').html('Matching').css('color', 'green');
+        $('#submit').disabled = false;
+        $submitBtn.removeAttr("disabled");
+      } else{
+        $('#message').html('Not Matching').css('color', 'red');
+        // $('#submit').disabled = true;
+        $submitBtn.attr("disabled", "disabled");
+      } 
+    });
+  </script>
 </body>
 </html>

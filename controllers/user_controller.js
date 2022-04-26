@@ -1,3 +1,5 @@
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 const User = require('../models/user-model');
 
 module.exports.login = function(req,res){
@@ -5,20 +7,13 @@ module.exports.login = function(req,res){
 }
 
 module.exports.login_check = function(req,res){
-    if(req.user.password === 'hello-12345!'){
-        res.redirect('/user/create/password',);
+    if(req.user.payment===true){
+        res.redirect('/user/profile');
     }
     else{
-        res.redirect('/user/profile');
-        // res.send(`User was already present in data base : ${req.user.name} , ${req.user.email}`);
+        //send them for payment
+        res.redirect('/join/pay');
     }
-    // console.log("checking place if it is a new user ==> ", req.user);
-    // return res.send(
-    //     `
-    //         <h4>Checking if user signed in: ${req.user.name} is a new user or old user present in database</h4>
-    //         <a href="/user/create">Create the new user</a>
-    //     `
-    // )
 }
 
 module.exports.login_failure = function(req,res){
@@ -44,7 +39,19 @@ module.exports.login_failure = function(req,res){
 // }
 
 module.exports.create_password_render = function(req, res){
-    res.render('new-password', {user_profile: req.user,} );
+    res.render('new-password', 
+        {
+            user_profile: req.user,
+            user_type: "NEW",
+    });
+    // res.send('<h1>New Password for user will be created here</h1>');
+}
+module.exports.change_password_render = function(req, res){
+    res.render('new-password', 
+        {
+            user_profile: req.user,
+            user_type: "OLD",
+    });
     // res.send('<h1>New Password for user will be created here</h1>');
 }
 
@@ -59,7 +66,12 @@ module.exports.create_password= async function(req, res){
             {new: true}    
         )
         // console.log("user password changed: ", f_user);
-        res.redirect('/user/profile');
+        if(req.body.user_type === "OLD"){
+            res.redirect('/user/profile');
+        }
+        else if(req.body.user_type === "NEW"){
+            res.redirect('/join/pay');
+        }
     }
     else{
         res.redirect('back');
@@ -76,5 +88,20 @@ module.exports.logout= async function(req, res){
     res.redirect('/login');
     // console.log(req.user);
     // res.render('p', {user_profile: req.user,} );
+}
+
+//middleware for user login verification
+module.exports.isLoggedIn = function(req,res,next){
+    req.user? next(): res.sendStatus(401);
+}
+
+module.exports.checkIfExisted = async function(req,res,next){
+    let f_user = await User.find({email: req.body.email});
+    if(f_user){
+        res.redirect('/login');
+    }
+    else{
+        next()
+    }
 }
 
