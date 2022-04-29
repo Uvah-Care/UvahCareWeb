@@ -15,12 +15,24 @@ const UserSchema = new mongoose.Schema(
             type:String,
             require: true,
         },
-        payment:{
-            type:Boolean,
-            require: true,
+        subscription:{
+            type:String,
         },
         payment_records:{
             type:Array
+        },
+
+        phone_no:{
+            type:String
+        },
+        age:{
+            type:Number
+        },
+        profession:{
+            type:String
+        },
+        medical_problem:{
+            type:String
         }
     },
     {

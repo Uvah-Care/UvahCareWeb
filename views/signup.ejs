@@ -3,7 +3,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="/css/main.css" />
 		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
   </head>
    
@@ -46,29 +47,37 @@
     <div id="main" class="wrapper style3">
       <div class="container">
         <header class="major">
-          <h2>Sign In</h2>
-          <p>Log into our commuinity for the fitness of your mind and body</p>
+          <h2>Sign Up</h2>
+          <p>Join our commuinity for the fitness of your mind and body</p>
         </header>
         <section>
           <!-- <h3>Form</h3> -->
-          <form action="/login/local" method="post">
+          <form action="/user/auth/signup/local" method="post">
             <div class="row aln-center aln-middle gtr-uniform gtr-75">
               <div class="row aln-center aln-middle gtr-uniform gtr-75">
-                <div class="col-8 col-12-xsmall">
+                <div class="col-7 col-12-xsmall">
+                  <input type="text" name="name" id="name" value="" placeholder="Name" required/>
+                </div>
+                <div class="col-7 col-12-xsmall">
                   <input type="email" name="email" id="email" value="" placeholder="Email" required/>
                 </div>
-                <div class="col-8 col-12-xsmall">
+                
+                <div class="col-7 col-12-xsmall">
                   <input type="password" name="password" id="password" value="" placeholder="Password" required minlength="8"/>
+                </div>
+                <div class="col-7 col-12-xsmall">
+                  <input type="password" name="confirm_password" id="confirm_password" value="" placeholder="Confirm password" required minlength="8"/>
+                  <span id='message'></span>
                 </div>
               </div>
               
-                <a href="/login/google" class="col-3 col-12-xsmall align-center">
-                  <h3>Sign In WITH GOOGLE</h3>
+                <a href="/user/auth/google" class="col-3 col-12-xsmall align-center">
+                  <h3>SIGN UP WITH GOOGLE</h3>
                   <img src="/images/Google.png" alt="">
                 </a>
           
                 <ul class="actions col-12">
-                  <li><input type="submit" id="submit" value="Login In" class="primary" /></li>
+                  <li><input type="submit" id="submit" value="Sign Up" class="primary" /></li>
                   <!-- <li><input type="reset" value="Reset" /></li> -->
                 </ul>
               </div>
@@ -128,40 +137,28 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.scrolly.min.js"></script>
-  <script src="js/jquery.dropotron.min.js"></script>
-  <script src="js/jquery.scrollex.min.js"></script>
-  <script src="js/browser.min.js"></script>
-  <script src="js/breakpoints.min.js"></script>
-  <script src="js/util.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.scrolly.min.js"></script>
+  <script src="/js/jquery.dropotron.min.js"></script>
+  <script src="/js/jquery.scrollex.min.js"></script>
+  <script src="/js/browser.min.js"></script>
+  <script src="/js/breakpoints.min.js"></script>
+  <script src="/js/util.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    //check if passwords match
+    $('#password, #confirm_password').on('keyup', function () {
+      let $submitBtn = $("#form input[type='submit']");
+      if ($('#password').val() == $('#confirm_password').val()) {
+        $('#message').html('Matching').css('color', 'green');
+        $('#submit').disabled = false;
+        $submitBtn.removeAttr("disabled");
+      } else{
+        $('#message').html('Not Matching').css('color', 'red');
+        // $('#submit').disabled = true;
+        $submitBtn.attr("disabled", "disabled");
+      } 
+    });
+  </script>
 </body>
 </html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>login</h1>
-    <form>
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
-        
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit" value="Submit">
-    </form>
-    <a href="/login/google">Sign in with google</a>
-    <a href="/join">Sign up</a>
-</body>
-</html> -->

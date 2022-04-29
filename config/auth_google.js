@@ -24,7 +24,6 @@ passport.use(new GoogleStrategy({
         name: profile.displayName,
         email: profile.email,
         password: "UVAHCARE-123", //temperary password
-        payment: false
       });
       done(null, new_user);
     }
@@ -36,6 +35,11 @@ passport.serializeUser(function(user,done){
 });
 
 passport.deserializeUser( async function(id,done){
-  let f_user = await User.findById(id);
-  done(null, f_user);
+  try{
+    let f_user = await User.findById(id);
+    done(null, f_user);
+  }
+  catch(error){
+    console.log("error in finding user: ",error);
+  }
 });

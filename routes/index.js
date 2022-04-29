@@ -7,8 +7,10 @@ router.get('/', homeController.home);
 router.get('/contact', homeController.contact);
 router.get('/about', homeController.about);
 router.get('/experts', homeController.experts);
-router.use('/join',require('./join'));
-router.use('/login',require('./login'));
-router.use('/user', require('./user'))
+
+router.use('/user', require('./user'));
+router.use('/subscribe', require('./subscribe'));
+// router.use('/join',require('./join'));
+// router.use('/login',require('./login'));
 
 module.exports = router; 

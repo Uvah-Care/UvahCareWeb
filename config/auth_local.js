@@ -29,7 +29,6 @@ passport.use(new LocalStrategy({
             name: request.body.name,
             email: request.body.email,
             password: request.body.password, //temperary password
-            payment: false,
           });
           done(null, new_user);
         }
@@ -45,7 +44,6 @@ passport.use(new LocalStrategy({
   }
 ));
 
-// passport.serializeUser(function(user,done){
 //serializing
 passport.serializeUser(
     function(user, done){
@@ -54,15 +52,12 @@ passport.serializeUser(
 );
 
 //deserializing
-passport.deserializeUser(function(id,done){
-    User.findById(id, 
-        function(error, f_user){
-            if(error){
-                console.log('error in finding user');
-                return done(error);
-            }
-
-            return done(null, f_user);
-        }
-    );
+passport.deserializeUser( async function(id,done){
+  try{
+    let f_user = await User.findById(id);
+    done(null, f_user);
+  }
+  catch(error){
+    console.log("error in finding user: ",error);
+  }
 });

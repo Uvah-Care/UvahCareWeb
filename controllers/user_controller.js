@@ -1,21 +1,28 @@
-const req = require('express/lib/request');
-const res = require('express/lib/response');
+// const req = require('express/lib/request');
+// const res = require('express/lib/response');
 const User = require('../models/user-model');
 
-module.exports.login = function(req,res){
-    return res.render('login');
+//render signin page
+module.exports.signin = function(req,res){
+    return res.render('signin');
+}
+//render signup page
+module.exports.signup = function(req,res){
+    return res.render('signup');
 }
 
+//if user is subscribed redirect to profile else to form
 module.exports.login_check = function(req,res){
-    if(req.user.payment===true){
+    if(req.user.subscription){
         res.redirect('/user/profile');
     }
     else{
         //send them for payment
-        res.redirect('/join/pay');
+        res.redirect('/subscribe/type');
     }
 }
 
+//if login fails
 module.exports.login_failure = function(req,res){
     return res.render('fail401');
 }
@@ -78,11 +85,12 @@ module.exports.create_password= async function(req, res){
     }
 }
 
+//render profile page
 module.exports.profile= async function(req, res){
     // console.log(req.user);
     res.render('profile', {user_profile: req.user,} );
 }
-
+// logout user
 module.exports.logout= async function(req, res){
     req.logout();
     res.redirect('/login');
@@ -95,10 +103,11 @@ module.exports.isLoggedIn = function(req,res,next){
     req.user? next(): res.sendStatus(401);
 }
 
+// (In local Signup) if user with same email exisited then send him to login page
 module.exports.checkIfExisted = async function(req,res,next){
     let f_user = await User.find({email: req.body.email});
     if(f_user){
-        res.redirect('/login');
+        res.redirect('/user/signin');
     }
     else{
         next()

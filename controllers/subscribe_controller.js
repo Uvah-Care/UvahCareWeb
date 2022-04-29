@@ -1,5 +1,5 @@
 const Razorpay = require('razorpay');
-const RegForm = require('../models/form-response-model');
+// const RegForm = require('../models/form-response-model');
 const User = require('../models/user-model');
 
 var instance = new Razorpay({
@@ -7,27 +7,44 @@ var instance = new Razorpay({
     key_secret: 'JA9J4N3QLEcTTouuDfytaZYI',
 });
 
-//render 
-module.exports.registerForm = async function(req,res){
-    return res.render('join');
+module.exports.type = function(req,res){
+    return res.render('choose-sub');
 }
 
-// module.exports.register = async function(req,res){
-//     //Save User Data Here(Create New User)
-//     // let new_user = await User.create({
-//     //     name: req.body.name,
-//     //     email: req.body.email,
-//     //     password: "hello-12345!", //temperary password
-//     // });
-//     // await RegForm.create(req.body);
-//     console.log('form submitted--> user registered: ',req.user);
-//     res.redirect('/login/check');
-//     // return res.redirect('/join/pay');
-// }
+module.exports.user_details = function(req,res){
+    console.log(req.params.cost);
+    if(req.params.cost==="499"){
+        return res.render('user-details-1', {user_profile: req.user,cost:499});
+    }
+    else if(req.params.cost==="1999"){
+        return res.render('user-details-2', {user_profile: req.user,cost:1999});
+    }
+    else if(req.params.cost==="2999"){        
+        return res.render('user-details-3', {user_profile: req.user,cost:2999});
+    }
+}
+
+module.exports.save_user_details = async function(req,res){
+    // save user details here (ph. no, age, profession)
+    console.log(req.body, req.params.cost);
+    try{
+        let user = await User.findById(req.user.id);
+        user.phone_no = req.body['tel'];
+        user.age = req.body['age'];
+        user.profession = req.body['profession'];
+        user.medical_problem = req.body['medical-problem'];
+        user.save();
+    }
+    catch(error){
+        console.log('error in saving user data: ',error);
+    }
+    res.redirect(`/subscribe/pay/${req.params.cost}`);
+}
+
 
 module.exports.payment = async function(req,res){
     // console.log("order request id",req.body)
-    res.render('razorpay',{user_info: req.user});
+    res.render('razorpay',{user_profile: req.user, cost: req.params.cost});
 }
 
 module.exports.create_payment_order= async function(req,res){
@@ -47,6 +64,8 @@ module.exports.create_payment_order= async function(req,res){
 }
 
 module.exports.verify_payment= async function(req,res){
+
+    //verify payment
     let body=req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
    
     var crypto = require("crypto");
@@ -58,7 +77,9 @@ module.exports.verify_payment= async function(req,res){
         response={"signatureIsValid":"true"}
     
     try{
-        let f_user = await User.findOne({email: req.user.email});
+        let f_user = await User.findById(req.user.id);
+        //update payment records
+        f_user.subscription = req.params.cost;
         if(f_user.payment_records){
             f_user.payment_records.push(
                 {
@@ -80,23 +101,3 @@ module.exports.verify_payment= async function(req,res){
     }
     res.send('Payment Verified');
 }
-
-// module.exports.successful_payment = async function(req,res){
-//     console.log(req.body);
-//     console.log(res.body);
-//     console.log(res.razorpay_payment_id);
-//     console.log(res.razorpay_order_id);
-//     console.log(res.razorpay_signature);
-//     let body=res.razorpay_order_id + "|" + res.razorpay_payment_id;
-   
-//     var crypto = require("crypto");
-//     var expectedSignature = crypto.createHmac('sha256', 'WDF7fn4fTm7XyuZum5eZAjm0')
-//                                      .update(body.toString())
-//                                      .digest('hex');
-//     // var response = {"signatureIsValid":"false"}
-//     console.log(expectedSignature, res.razorpay_signature);
-//     if(expectedSignature !== res.razorpay_signature)
-//         res.sendStatus(401);
-    
-//     res.redirect('/user/profile');
-// }
