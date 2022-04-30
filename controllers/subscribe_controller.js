@@ -78,20 +78,23 @@ module.exports.verify_payment= async function(req,res){
     
     try{
         let f_user = await User.findById(req.user.id);
+        let current = new Date;
         //update payment records
         f_user.subscription = req.params.cost;
         if(f_user.payment_records){
             f_user.payment_records.push(
                 {
-                    order_id: req.body.response.razorpay_order_id,
+                    amount: req.params.cost,
                     payment_id: req.body.response.razorpay_payment_id,
+                    date: current.toDateString(),
                 }
             )
         }
         else{
             f_user.payment_records = [{
-                order_id: req.body.response.razorpay_order_id,
+                amount: req.params.cost,
                 payment_id: req.body.response.razorpay_payment_id,
+                date: current.toDateString(),
             }];
         }
         await f_user.save();

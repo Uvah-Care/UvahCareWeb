@@ -1,4 +1,177 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="/css/main.css" />
+		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
+  </head>
+   
+<body class="is-preload landing">
+  <div id="page-wrapper">
+    <!-- Header -->
+    <header id="header">
+      <h1 id="logo">
+        <img class="logo-image" src="/images/Uvah care logo wb1-01.png" alt>
+        <a href="/">UVAH CARE</a>
+      </h1>
+      <nav id="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/experts">Experts</a></li>
+          <li><a href="/about">About us</a></li>
+          <li><a href="/contact">Contact us</a></li>
+          <li><a href="/user/logout" class="button primary">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main" class="wrapper style3">
+      <div class="container">
+        <section>
+          <header class="major">
+            <h2>Profile</h2>
+          </header>
+          <div class="row aln-center">
+            <div class="col-6">
+              <h3><strong>Name : </strong> <%= user_profile.name%></h3>
+              <h3><strong>Email : </strong> <%= user_profile.email%></h3>
+              <h3><strong>Age : </strong><%= user_profile.age%></h3>
+              <h3><strong>Phone no.: </strong><%= user_profile.phone_no%> </h3>
+              <h3><strong>Profession : </strong><%= user_profile.profession%> </h3>
+              <% if(user_profile.medical_problems){%>
+                <h3><strong>medical problems : </strong><%= user_profile.medical_problems%> </h3>
+              <%}%>  
+            </div>
+            <div class="col-4 ">
+              <h2>Current Subscribed Plan</h2>
+              <% if(user_profile.subscription=='49900'){%>
+                <h3>
+                  <strong>Basic </strong> <br>
+                  Group of 20 Batch -<strong> Rs 699 </strong> <br> 
+                  ✔️5 days per week training sessions <br>
+                  ✔️Group Yoga Training <br>
+                  ✔️ Strength and Flexibility Training <br>
+                  ✔️ Meditation and Pranayama Session <br>
+                </h3>
+                
+              <%}else if(user_profile.subscription=='199900'){%>
+                <h3>
+                  <strong>Basic </strong> <br>
+                  Group of 20 Batch -<strong> Rs 699 </strong> <br> 
+                  ✔️5 days per week training sessions <br>
+                  ✔️Group Yoga Training <br>
+                  ✔️ Strength and Flexibility Training <br>
+                  ✔️ Meditation and Pranayama Session <br>
+                </h3>
+              <%}else if(user_profile.subscription=='299900'){%>
+                <h3>
+                  <strong>Basic </strong> <br>
+                  Group of 20 Batch -<strong> Rs 699 </strong> <br> 
+                  ✔️5 days per week training sessions <br>
+                  ✔️Group Yoga Training <br>
+                  ✔️ Strength and Flexibility Training <br>
+                  ✔️ Meditation and Pranayama Session <br>
+                </h3>
+              <%}%>
+            </div>
+          </div>
+        </section>
+        <section>
+          <header class="pad-top">
+            <h2>Payment history</h2>
+          </header>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>item</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let i=0; i< user_profile.payment_records.length ; i++){ %>
+                  <td><%=i+1%></td>
+                  <td>Uvah Care 1 month Subscription</td>
+                  <td><%= user_profile.payment_records[i].date %></td>
+                  <td>₹ <%=(user_profile.subscription)/100 %></td>
+                <%}%>
+              </tbody>
+              <!-- <tfoot>
+                <tr>
+                  <td colspan="2"></td>
+                  <td>₹ <%=(user_profile.subscription)/100%></td>
+                </tr>
+              </tfoot> -->
+            </table>
+          </div>
+
+        </section>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer id="footer" class="row">
+        <div class="col-8 col-12-xsmall row">
+            <div class="col-4 col-12-xsmall row aln-center">
+                <div class="col-12 col-12-xsmall align-center"><h1><a>Uvah Care</a></h1></div>							
+                <div class="col-9 col-12-xsmall"><span class="image fit"><img src="/images/Uvah care logo wb1-01.png"></span></div>
+                <div class="col-9 col-12-xsmall"><a href=" " target="_blank"><span class="image fit"><img src="/images/google-playstore.png"></span></a></div>
+            </div>
+
+            <div class="col-3 col-12-xsmall pad-left">
+                <ul class="actions stacked">
+                    <li><a href=""><h1>Contact Us</h1></a></li>
+                    <li><a href=""><h1>About Us</h1></a></li>
+                    <li><a href=""><h1>Our Experts</h1></a></li>
+                    <li><a href=""><h1>Need Help?</h1></a></li>
+                </ul>
+            </div>
+            <div class="col-4 col-12-xsmall pad-left">
+                <ul class="actions stacked">
+                    <!-- <li><h4>OUR TERMS</h4></li> -->
+                    <li><a href=""><h1>Privacy Policy</h1></a></li>
+                    <li><a href=""><h1>Terms and conditions</h1></a></li>
+                    <li><a href=""><h1>Terms of service</h1></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-social col-4 col-12-xsmall">
+            <h2>Social</h2>
+            <ul class="icons actions">
+            <li><a href="https://twitter.com/CareUvah?t=jb3rWQa-ldpURupJmfnQgw&s=08" class="icon"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com/pages/category/Medical---Health/UvahCare-113228164180677/" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/uvah_care/" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://youtube.com/channel/UCAAxT_qT81CNMlY5kEhZZeA" class="icon"><i class="fa-brands fa-youtube"></i></a></li>
+            <!-- <li><a href="#" class="icon"><i class="fa-brands fa-github"></i></a></li> -->
+            <!-- <li><a href="#" class="icon"><i class="fa-solid fa-envelope"></i></a></li> -->
+            </ul>
+        </div>
+        <ul class="col-12 col-12-xsmall copyright">
+            <li>&copy; UVAH CARE. All rights reserved.</li>
+        </ul>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.scrolly.min.js"></script>
+  <script src="/js/jquery.dropotron.min.js"></script>
+  <script src="/js/jquery.scrollex.min.js"></script>
+  <script src="/js/browser.min.js"></script>
+  <script src="/js/breakpoints.min.js"></script>
+  <script src="/js/util.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,8 +183,8 @@
     <h1>Profile</h1>
     <h2> <%=user_profile.name%> </h2>
     <h2> <%=user_profile.email%> </h2>
-    <!-- <h2> <%= user_profile.name %> </h2> -->
+    <h2> <%= user_profile.name %> </h2>
     <a href="/user/logout"> LOGOUT </a>
     <a href="/user/change/password"> Change Password </a>
 </body>
-</html>
+</html> -->

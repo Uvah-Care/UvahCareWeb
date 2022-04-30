@@ -87,13 +87,13 @@ module.exports.create_password= async function(req, res){
 
 //render profile page
 module.exports.profile= async function(req, res){
-    // console.log(req.user);
+    console.log(req.user);
     res.render('profile', {user_profile: req.user,} );
 }
 // logout user
 module.exports.logout= async function(req, res){
     req.logout();
-    res.redirect('/login');
+    res.redirect('/');
     // console.log(req.user);
     // res.render('p', {user_profile: req.user,} );
 }
