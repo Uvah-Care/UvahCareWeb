@@ -100,13 +100,19 @@ module.exports.logout= async function(req, res){
 
 //middleware for user login verification
 module.exports.isLoggedIn = function(req,res,next){
-    req.user? next(): res.sendStatus(401);
+    if(req.user){
+        next();
+    }
+    else{
+        res.redirect('/user/signin');
+    }
+    // req.user? next(): res.sendStatus(401);
 }
 
 // (In local Signup) if user with same email exisited then send him to login page
 module.exports.checkIfExisted = async function(req,res,next){
     let f_user = await User.find({email: req.body.email});
-    if(f_user){
+    if(f_user.length!==0){
         res.redirect('/user/signin');
     }
     else{

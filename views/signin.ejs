@@ -36,24 +36,27 @@
           <!-- <h3>Form</h3> -->
           <form action="/user/auth/signin/local" method="post">
             <div class="row aln-center aln-middle gtr-uniform gtr-75">
-              <div class="row aln-center aln-middle gtr-uniform gtr-75">
+              <div class="row col-7 aln-center aln-middle gtr-uniform gtr-75">
                 <div class="col-8 col-12-xsmall">
                   <input type="email" name="email" id="email" value="" placeholder="Email" required/>
                 </div>
                 <div class="col-8 col-12-xsmall">
                   <input type="password" name="password" id="password" value="" placeholder="Password" required minlength="8"/>
                 </div>
-              </div>
-              
-                <a href="/user/auth/google" class="col-3 col-12-xsmall align-center">
-                  <h3>Sign In WITH GOOGLE</h3>
-                  <img src="/images/Google.png" alt="">
-                </a>
-          
                 <ul class="actions col-12">
                   <li><input type="submit" id="submit" value="Login In" class="primary" /></li>
-                  <!-- <li><input type="reset" value="Reset" /></li> -->
                 </ul>
+              </div>
+              <div class="col-12 align-center text-btw-lines">OR</div>
+              <a href="/user/auth/google" class="col-3 col-12-xsmall align-center">
+                <h3><strong>Sign In with GOOGLE</strong></h3>
+                <img src="/images/Google.png" alt="">
+              </a>
+              
+              <div class="col-10 align-center">
+                <h4> Need An Account? <a href="/user/signup"><b>Sign Up</b></a></h4>
+              </div>
+
               </div>
             </div>
           </form>

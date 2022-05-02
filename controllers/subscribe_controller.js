@@ -8,7 +8,7 @@ var instance = new Razorpay({
 });
 
 module.exports.type = function(req,res){
-    return res.render('choose-sub');
+    return res.render('choose-sub',{user: req.user});
 }
 
 module.exports.user_details = function(req,res){
