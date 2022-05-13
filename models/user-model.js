@@ -8,12 +8,12 @@ const UserSchema = new mongoose.Schema(
         },
         email:{
             type:String,
-            require: true,
+            required: true,
             unique: true,
         },
         password:{
             type:String,
-            require: true,
+            required: true,
         },
         subscription:{
             type:String,
@@ -21,7 +21,9 @@ const UserSchema = new mongoose.Schema(
         payment_records:{
             type:Array
         },
-
+        timming:{
+            type:String
+        },
         phone_no:{
             type:String
         },

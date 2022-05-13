@@ -22,26 +22,28 @@
           <li><a href="/experts">Experts</a></li>
           <li><a href="/about">About us</a></li>
           <li><a href="/contact">Contact us</a></li>
+          <li><a href="/user/profile" class="button primary"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></a></li>
+          <li><a href="/user/logout" class="button primary">Logout</a></li>
         </ul>
       </nav>
     </header>
 
     <div id="main" class="wrapper style3">
       <div class="container">
-        <header class="major">
+        <header class="major pad-top">
           <h2>Enter Details</h2>
           <p>Enter your details to help us in helping you better </p>
         </header>
         <section>
           <!-- <h3>Form</h3> -->
-          <form action="/subscribe/user-details/<%=cost%>" method="post">
+          <form action="/subscribe/user-details/<%=sub_name%>" method="post">
             <div class="row aln-center aln-middle gtr-uniform gtr-75">
               <div class="row aln-center aln-middle gtr-uniform gtr-75">
                 <div class="col-5 col-12-xsmall off-1">
-                  <input type="text" name="name" id="name" value="<%=user_profile.name%>" readonly required/>
+                  <input type="text" name="name" id="name" value="<%=user.name%>" readonly required/>
                 </div>
                 <div class="col-5 col-12-xsmall off-1">
-                  <input type="email" name="email" id="email" value="<%=user_profile.email%>" readonly required/>
+                  <input type="email" name="email" id="email" value="<%=user.email%>" readonly required/>
                 </div>
                 
                 <div class="col-5 col-12-xsmall off-1">
@@ -57,6 +59,21 @@
                 </div>
                 <div class="col-7 col-12-xsmall">
                   <input type="text" name="medical-problem" id="medical-problem" value="" placeholder="any Medical problem"/>
+                </div>
+                <div class="col-8 col-12-xsmall">
+                  <select name="timming" id="category" required>
+                    <option value="none" selected disabled hidden>select preferred timming</option>
+                    <optgroup label="Morning">
+                      <option value="5-6 AM">5-6 AM</option>
+                      <option value="6-7 AM">6-7 AM</option>
+                      <option value="7-8 AM">7-8 AM</option>
+                    </optgroup>
+                    <optgroup label="Evening">
+                      <option value="5-6 PM">5-6 PM</option>
+                      <option value="6-7 PM">6-7 PM</option>
+                      <option value="7-8 PM">7-8 PM</option>
+                    </optgroup>
+                  </select>
                 </div>
                 <!-- <div class="col-7 col-12-xsmall">
                   <input type="text" name="profession" id="profession" value="" placeholder=""/>
@@ -87,18 +104,18 @@
 
         <div class="col-3 col-12-xsmall pad-left">
           <ul class="actions stacked">
-            <li><a href=""><h1>Contact Us</h1></a></li>
-            <li><a href=""><h1>About Us</h1></a></li>
-            <li><a href=""><h1>Our Experts</h1></a></li>
-            <li><a href=""><h1>Need Help?</h1></a></li>
+            <li><a href=""><h3>Contact Us</h3></a></li>
+            <li><a href=""><h3>About Us</h3></a></li>
+            <li><a href=""><h3>Our Experts</h3></a></li>
+            <li><a href=""><h3>Need Help?</h3></a></li>
           </ul>
         </div>
         <div class="col-4 col-12-xsmall pad-left">
           <ul class="actions stacked">
             <!-- <li><h4>OUR TERMS</h4></li> -->
-            <li><a href=""><h1>Privacy Policy</h1></a></li>
-            <li><a href=""><h1>Terms and conditions</h1></a></li>
-            <li><a href=""><h1>Terms of service</h1></a></li>
+            <li><a href=""><h3>Privacy Policy</h3></a></li>
+            <li><a href=""><h3>Terms and conditions</h3></a></li>
+            <li><a href=""><h3>Terms of service</h3></a></li>
           </ul>
         </div>
       </div>

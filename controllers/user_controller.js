@@ -1,6 +1,7 @@
 // const req = require('express/lib/request');
 // const res = require('express/lib/response');
 const User = require('../models/user-model');
+const Subscription = require('../models/subscription-model');
 
 //render signin page
 module.exports.signin = function(req,res){
@@ -56,7 +57,7 @@ module.exports.create_password_render = function(req, res){
 module.exports.change_password_render = function(req, res){
     res.render('new-password', 
         {
-            user_profile: req.user,
+            user: req.user,
             user_type: "OLD",
     });
     // res.send('<h1>New Password for user will be created here</h1>');
@@ -87,8 +88,14 @@ module.exports.create_password= async function(req, res){
 
 //render profile page
 module.exports.profile= async function(req, res){
-    console.log(req.user);
-    res.render('profile', {user_profile: req.user,} );
+    // console.log(req.user);
+    try{
+        const f_sub = await Subscription.findOne({name: req.user.subscription});
+        res.render('profile', {user: req.user, subscribe: f_sub});
+    }
+    catch(error){
+        console.error('error in getting subscription: ',error )
+    }
 }
 // logout user
 module.exports.logout= async function(req, res){

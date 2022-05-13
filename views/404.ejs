@@ -3,9 +3,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" href="css/main.css"> -->
     <link rel="stylesheet" href="/css/main.css" />
-		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
   </head>
    
 <body class="is-preload landing">
@@ -19,79 +18,35 @@
       <nav id="nav">
         <ul>
           <li><a href="/">Home</a></li>
-            <!-- <li>
-              <a href="#">Layouts</a>
-              <ul>
-                <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                <li><a href="no-sidebar.html">No Sidebar</a></li>
-                <li>
-                  <a href="#">Submenu</a>
-                  <ul>
-                    <li><a href="#">Option 1</a></li>
-                    <li><a href="#">Option 2</a></li>
-                    <li><a href="#">Option 3</a></li>
-                    <li><a href="#">Option 4</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li> -->
           <li><a href="/experts">Experts</a></li>
           <li><a href="/about">About us</a></li>
           <li><a href="/contact">Contact us</a></li>
-          <!-- <li><a href="./join.html" class="button primary">Join Us</a></li> -->
+          <%if(user){%>
+            <li><a href="/user/profile" class="button primary"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></a></li>
+            <li><a href="/user/logout" class="button primary">Logout</a></li>
+          <%}else{%>
+            <li><a href="/user/signup" class="button primary">Join Us</a></li>
+            <li><a href="/user/signin" class="button primary">Login</a></li>
+          <%}%>
         </ul>
       </nav>
     </header>
 
-    <div id="main" class="wrapper style3">
+    <div id="main" class="wrapper style1">
       <div class="container">
         <header class="major">
-          <h2>Sign Up</h2>
-          <p>Join our commuinity for the fitness of your mind and body</p>
-        </header>
-        <section>
-          <!-- <h3>Form</h3> -->
-          <form action="/user/auth/signup/local" method="post">
-            <div class="row aln-center aln-middle gtr-uniform gtr-75">
-
-              <div class="col-12 row aln-center aln-middle gtr-uniform gtr-75">
-
-                <div class="col-5 pad-right col-12-xsmall">
-                  <input type="text" name="name" id="name" value="" placeholder="Name" required/>
-                </div>
-                <div class="col-5 pad-left col-12-xsmall">
-                  <input type="email" name="email" id="email" value="" placeholder="Email" required/>
-                </div>
-                
-                <div class="col-7 col-12-xsmall">
-                  <input type="password" name="password" id="password" value="" placeholder="Password" required minlength="8"/>
-                </div>
-                <div class="col-7 col-12-xsmall">
-                  <input type="password" name="confirm_password" id="confirm_password" value="" placeholder="Confirm password" required minlength="8"/>
-                  <span id='message'></span>
-                </div>
-                <ul class="actions col-12">
-                  <li><input type="submit" id="submit" value="Sign Up" class="primary" /></li>
-                  <!-- <li><input type="reset" value="Reset" /></li> -->
-                </ul>
-              </div>
-              <div class="col-12 align-center text-btw-lines">OR</div>
-              <a href="/user/auth/google" class="col-3 col-12-xsmall align-center">
-                <h3><strong>SIGN UP WITH GOOGLE</strong></h3>
-                <img src="/images/Google.png" alt="">
-              </a>
-              <div class="col-3 align-center">
-                <h4> Already have an Account? <a href="/user/signin"><b>Sign In</b></a></h4>
-              </div>
-            </div>
-            </div>
-          </form>
-        </section>    
+            <h2>No such page exist</h2>
+            <p>Unfortunately the page you are looking for does not exist or has ceased to exist</p>
+        </header> 
+        <div>
+            <ul class="actions align-center">
+                <li><a href="/" class="button fit primary"><h3 class="line-ht-2em">Go to Home Page</h3></a></li>
+            </ul>
+        </div> 
       </div>
     </div>
-			<!-- Footer -->
-      <footer id="footer" class="row">
+	<!-- Footer -->
+    <footer id="footer" class="row">
         <div class="col-8 col-12-xsmall row">
           <div class="col-4 col-12-xsmall row aln-center">
             <div class="col-12 col-12-xsmall align-center"><h1><a>Uvah Care</a></h1></div>							
@@ -144,20 +99,5 @@
   <script src="/js/breakpoints.min.js"></script>
   <script src="/js/util.js"></script>
   <script src="/js/main.js"></script>
-  <script>
-    //check if passwords match
-    $('#password, #confirm_password').on('keyup', function () {
-      let $submitBtn = $("#form input[type='submit']");
-      if ($('#password').val() == $('#confirm_password').val()) {
-        $('#message').html('Matching').css('color', 'green');
-        $('#submit').disabled = false;
-        $submitBtn.removeAttr("disabled");
-      } else{
-        $('#message').html('Not Matching').css('color', 'red');
-        // $('#submit').disabled = true;
-        $submitBtn.attr("disabled", "disabled");
-      } 
-    });
-  </script>
 </body>
 </html>

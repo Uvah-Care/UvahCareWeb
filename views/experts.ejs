@@ -22,6 +22,13 @@
           <li><a href="/experts">Experts</a></li>
           <li><a href="/about">About us</a></li>
           <li><a href="/contact">Contact us</a></li>
+          <%if(user){%>
+            <li><a href="/user/profile" class="button primary"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></a></li>
+            <li><a href="/user/logout" class="button primary">Logout</a></li>
+          <%}else{%>
+            <li><a href="/user/signup" class="button primary">Join Us</a></li>
+            <li><a href="/user/signin" class="button primary">Login</a></li>
+          <%}%>
         </ul>
       </nav>
     </header>
@@ -101,18 +108,18 @@
 
           <div class="col-3 col-12-xsmall pad-left">
             <ul class="actions stacked">
-              <li><a href=""><h1>Contact Us</h1></a></li>
-              <li><a href=""><h1>About Us</h1></a></li>
-              <li><a href=""><h1>Our Experts</h1></a></li>
-              <li><a href=""><h1>Need Help?</h1></a></li>
+              <li><a href=""><h3>Contact Us</h3></a></li>
+              <li><a href=""><h3>About Us</h3></a></li>
+              <li><a href=""><h3>Our Experts</h3></a></li>
+              <li><a href=""><h3>Need Help?</h3></a></li>
             </ul>
           </div>
           <div class="col-4 col-12-xsmall pad-left">
             <ul class="actions stacked">
               <!-- <li><h4>OUR TERMS</h4></li> -->
-              <li><a href=""><h1>Privacy Policy</h1></a></li>
-              <li><a href=""><h1>Terms and conditions</h1></a></li>
-              <li><a href=""><h1>Terms of service</h1></a></li>
+              <li><a href=""><h3>Privacy Policy</h3></a></li>
+              <li><a href=""><h3>Terms and conditions</h3></a></li>
+              <li><a href=""><h3>Terms of service</h3></a></li>
             </ul>
           </div>
         </div>

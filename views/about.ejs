@@ -1,12 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    entered about us page
-</body>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>UVAH CARE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<link rel="icon" href="/images/Uvah care logo wb1-01.png">
+		<link rel="apple-touch-icon" href="/images/Uvah care logo wb1-01.png">		
+		
+		<link rel="stylesheet" href="/css/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
+		<noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo">
+						<img class="logo-image" src="/images/Uvah care logo wb1-01.png" alt>
+						<a href="/">UVAH CARE</a>
+					</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="/experts">Experts</a></li>
+							<li><a href="/about">About us</a></li>
+							<li><a href="/contact">Contact us</a></li>
+							<%if(user){%>
+								<li><a href="/user/profile" class="button primary"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></a></li>
+								<li><a href="/user/logout" class="button primary">Logout</a></li>
+							<%}else{%>
+								<li><a href="/user/signup" class="button primary">Join Us</a></li>
+								<li><a href="/user/signin" class="button primary">Login</a></li>
+							<%}%>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- three -->
+				<section id="three" class="wrapper special style1 fade-up">
+					<div class="content">
+						<div class="container pad-top">
+							<header class="major">
+								<h2>About Us</h2>
+							</header>
+							<h3>OUR VISION</h3>
+							<p>We are Uvahcare, holding on to the vision of rejuvenating body,mind and soul. 
+								We aim at using technology,innovation and creativity to escort people towards Yoga,Ayurveda
+								and Naturopathy,which we consider as the most invaluable gems for a healthy lifestyle.
+								We solve health problems of people by connecting them to health experts. Our main focus is to ameliorate the lives of people by
+								reconstructing their way of thinking. We take initiative to solve their health problems with better techniques 
+								based on Yoga, Ayurveda and Naturopathy; and provide them with persistent consultancy services.
+								Ours is a prevention model,aiming at holistic development of the ones connected with us.
+								So next time, don't let your health problems overpower you. Drop down your frowns and join our family of Uvahcarians right away.
+							</p>
+							<hr>	
+							<h3>OUR TEAM</h3>
+							<div class="row gtr-150 pad-top">
+								<div class="col-4 col-12-medium">
+										<section >
+											<a href="#" class="image fit"><img src="/images/banner.jpg" alt="" /></a>
+										</section>
+								</div>
+								<div class="col-8 col-12-medium align-left">
+									<section>
+										<h3><b>Lorem ipsum dolor</b></h3>
+										<h4>
+											Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque optio voluptates molestiae tenetur dolore ex necessitatibus ipsam vitae assumenda deleniti cupiditate dolorem voluptas error perferendis repellendus ratione maxime atque nemo, eaque, id nesciunt velit iure itaque ducimus? Animi, sequi! Incidunt, magni! Veniam magni neque, fuga libero, voluptate aliquam iste quisquam minus necessitatibus sit tempora? Excepturi perferendis voluptate, quidem ipsum, deserunt inventore esse ex officia libero adipisci laborum. Quos aspernatur illum nobis necessitatibus minus similique eligendi.
+										</h4>
+									</section>
+								</div>
+							</div> 
+							<hr>
+							<div class="row gtr-150 pad-top">
+								<div class="col-8 col-12-medium align-right">
+									<section>
+										<h3><b>Lorem ipsum dolor</b></h3>
+										<h4>
+											Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque optio voluptates molestiae tenetur dolore ex necessitatibus ipsam vitae assumenda deleniti cupiditate dolorem voluptas error perferendis repellendus ratione maxime atque nemo, eaque, id nesciunt velit iure itaque ducimus? Animi, sequi! Incidunt, magni! Veniam magni neque, fuga libero, voluptate aliquam iste quisquam minus necessitatibus sit tempora? Excepturi perferendis voluptate, quidem ipsum, deserunt inventore esse ex officia libero adipisci laborum. Quos aspernatur illum nobis necessitatibus minus similique eligendi.
+										</h4>
+									</section>
+								</div>
+								<div class="col-4 col-12-medium">
+										<section >
+											<a href="#" class="image fit"><img src="/images/banner.jpg" alt="" /></a>
+										</section>
+								</div>
+							</div> 
+							<hr>	
+							<div class="row gtr-150 pad-top">
+								<div class="col-4 col-12-medium">
+										<section >
+											<a href="#" class="image fit"><img src="/images/banner.jpg" alt="" /></a>
+										</section>
+								</div>
+								<div class="col-8 col-12-medium align-left">
+									<section>
+										<h3><b>Lorem ipsum dolor</b></h3>
+										<h4>
+											Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque optio voluptates molestiae tenetur dolore ex necessitatibus ipsam vitae assumenda deleniti cupiditate dolorem voluptas error perferendis repellendus ratione maxime atque nemo, eaque, id nesciunt velit iure itaque ducimus? Animi, sequi! Incidunt, magni! Veniam magni neque, fuga libero, voluptate aliquam iste quisquam minus necessitatibus sit tempora? Excepturi perferendis voluptate, quidem ipsum, deserunt inventore esse ex officia libero adipisci laborum. Quos aspernatur illum nobis necessitatibus minus similique eligendi.
+										</h4>
+									</section>
+								</div>
+							</div> 
+							
+						</div>
+					</div>
+				</section>
+	
+			<!-- Footer -->
+				<footer id="footer" class="row">
+					<div class="col-8 col-12-xsmall row">
+						<div class="col-4 col-12-xsmall row aln-center">
+							<div class="col-12 col-12-xsmall align-center"><h1><a>Uvah Care</a></h1></div>							
+							<div class="col-9 col-12-xsmall"><span class="image fit"><img src="/images/Uvah care logo wb1-01.png"></span></div>
+							<div class="col-9 col-12-xsmall"><a href=" " target="_blank"><span class="image fit"><img src="/images/google-playstore.png"></span></a></div>
+						</div>
+
+						<div class="col-3 col-12-xsmall pad-left">
+							<ul class="actions stacked">
+								<li><a href=""><h3>Contact Us</h3></a></li>
+								<li><a href=""><h3>About Us</h3></a></li>
+								<li><a href=""><h3>Our Experts</h3></a></li>
+								<li><a href=""><h3>Need Help?</h3></a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-xsmall pad-left">
+							<ul class="actions stacked">
+								<!-- <li><h4>OUR TERMS</h4></li> -->
+								<li><a href=""><h3>Privacy Policy</h3></a></li>
+								<li><a href=""><h3>Terms and conditions</h3></a></li>
+								<li><a href=""><h3>Terms of service</h3></a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="footer-social col-4 col-12-xsmall">
+						<h2>Social</h2>
+						<ul class="icons actions">
+							<li><a href="https://twitter.com/CareUvah?t=jb3rWQa-ldpURupJmfnQgw&s=08" class="icon"><i class="fa-brands fa-twitter"></i></a></li>
+							<li><a href="https://www.facebook.com/pages/category/Medical---Health/UvahCare-113228164180677/" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+							<li><a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a></li>
+							<li><a href="https://www.instagram.com/uvah_care/" class="icon"><i class="fa-brands fa-instagram"></i></a></li>
+							<li><a href="https://youtube.com/channel/UCAAxT_qT81CNMlY5kEhZZeA" class="icon"><i class="fa-brands fa-youtube"></i></a></li>
+							<!-- <li><a href="#" class="icon"><i class="fa-brands fa-github"></i></a></li> -->
+							<!-- <li><a href="#" class="icon"><i class="fa-solid fa-envelope"></i></a></li> -->
+						</ul>
+					</div>
+					<ul class="col-12 col-12-xsmall copyright">
+						<li>&copy; UVAH CARE. All rights reserved.</li>
+					</ul>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/jquery.scrolly.min.js"></script>
+			<script src="/js/jquery.dropotron.min.js"></script>
+			<script src="/js/jquery.scrollex.min.js"></script>
+			<script src="/js/browser.min.js"></script>
+			<script src="/js/breakpoints.min.js"></script>
+			<script src="/js/util.js"></script> 
+			<script src="/js/main.js"></script>
+	</body>
 </html>

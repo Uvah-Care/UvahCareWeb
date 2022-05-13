@@ -22,6 +22,7 @@
           <li><a href="/experts">Experts</a></li>
           <li><a href="/about">About us</a></li>
           <li><a href="/contact">Contact us</a></li>
+          <li><a href="/user/profile" class="button primary"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></a></li>
           <li><a href="/user/logout" class="button primary">Logout</a></li>
         </ul>
       </nav>
@@ -30,99 +31,90 @@
     <div id="main" class="wrapper style3">
       <div class="container">
         <section>
-          <header class="major">
+          <header class="major pad-top">
             <h2>Profile</h2>
           </header>
           <div class="row aln-center">
             <div class="col-6">
-              <h3><strong>Name : </strong> <%= user_profile.name%></h3>
-              <h3><strong>Email : </strong> <%= user_profile.email%></h3>
-              <h3><strong>Age : </strong><%= user_profile.age%></h3>
-              <h3><strong>Phone no.: </strong><%= user_profile.phone_no%> </h3>
-              <h3><strong>Profession : </strong><%= user_profile.profession%> </h3>
-              <% if(user_profile.medical_problems){%>
-                <h3><strong>medical problems : </strong><%= user_profile.medical_problems%> </h3>
-              <%}%>  
+              <h3><strong>Name : </strong> <%= user.name%></h3>
+              <h3><strong>Email : </strong> <%= user.email%></h3>
+              <%if(user.age){%>
+                <h3><strong>Age : </strong><%= user.age%></h3>
+                <h3><strong>Phone no.: </strong><%= user.phone_no%> </h3>
+                <h3><strong>Profession : </strong><%= user.profession%> </h3>
+                <h3><strong>Timming : </strong><%= user.timming%> </h3>
+                <% if(user.medical_problems){%>
+                  <h3><strong>medical problems : </strong><%= user.medical_problems%> </h3>
+                <%}%>  
+              <%}%>
             </div>
-            <div class="col-4 ">
-              <h2>Current Subscribed Plan</h2>
-              <% if(user_profile.subscription=='49900'){%>
-                <h3>
-                  <strong>Basic </strong> <br>
-                  Group of 20 Batch -<strong> Rs 699 </strong> <br> 
-                  ✔️5 days per week training sessions <br>
-                  ✔️Group Yoga Training <br>
-                  ✔️ Strength and Flexibility Training <br>
-                  ✔️ Meditation and Pranayama Session <br>
-                </h3>
-                
-              <%}else if(user_profile.subscription=='199900'){%>
-                <h3>
-                  <strong>Basic </strong> <br>
-                  Medium
-                  Group of 8 batch - Rs 1999 only-(Original Rs 3999-50% off)-(5k-8k)
-                  ✔️5 days per week training sessions
-                  ✔️Personalized care and 1-1 attention from Experts
-                  ✔️ Strength and Flexibility Training
-                  ✔️ Meditation and Pranayama Session
-                  ✔️ Immunity Build up
-                  ✔️ Disease specific Yoga ( Yoga Therapy)
-                  ✔️ Chat / Call Support 
-                  ✔️On Demand Consultancy throughout the membership.
-                  ✔️Self Healing Sessions
 
-                  Group of 20 Batch -<strong> Rs 1999 </strong> <br> 
-                  ✔️5 days per week training sessions <br>
-                  ✔️Group Yoga Training <br>
-                  ✔️ Strength and Flexibility Training <br>
-                  ✔️ Meditation and Pranayama Session <br>
-                </h3>
-              <%}else if(user_profile.subscription=='299900'){%>
-                <h3>
-                  <strong>Basic </strong> <br>
-                  Group of 20 Batch -<strong> Rs 699 </strong> <br> 
-                  ✔️5 days per week training sessions <br>
-                  ✔️Group Yoga Training <br>
-                  ✔️ Strength and Flexibility Training <br>
-                  ✔️ Meditation and Pranayama Session <br>
-                </h3>
+            <div class="col-5 ">
+              <%if(user.subscription){%>
+                <h2>Current Subscribed Plan </h2>
+                  <h3>
+                    <strong><%=subscribe.title%> </strong> <br>
+                    Cost: <strong>₹ <%=subscribe.cost%></strong> <br> 
+                    <%for(let i=0; i<subscribe.properties.length; i++){%>
+                      ✔️<%= subscribe.properties[i] %> <br>
+                    <%}%>
+                  </h3>
+              <%}else{%>
+                <h2 class="align-center">No Plan Subscribed</h2>
+                <ul class="actions align-center">
+                  <li><a href="/subscribe/type" class="button fit primary"><h3 class="line-ht-2em">Choose a Subscription</h3></a></li>
+                </ul>
               <%}%>
             </div>
           </div>
         </section>
-        <section>
-          <header class="pad-top">
-            <h2>Payment history</h2>
-          </header>
-
-          <div class="table-wrapper">
+        <%if(user.subscription){%>
+          <div class="table-wrapper pad-top">
             <table>
-              <thead>
-                <tr>
-                  <th>item</th>
-                  <th>Description</th>
-                  <th>Date</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
               <tbody>
-                <% for(let i=0; i< user_profile.payment_records.length ; i++){ %>
-                  <td><%=i+1%></td>
-                  <td>Uvah Care 1 month Subscription</td>
-                  <td><%= user_profile.payment_records[i].date %></td>
-                  <td>₹ <%=(user_profile.subscription)/100 %></td>
-                <%}%>
+                <td> <h4>Your subscription has been notified to our Team. They will be adding your phone number to whatsapp group according to your selected subscription.</h4></td>
               </tbody>
-              <!-- <tfoot>
-                <tr>
-                  <td colspan="2"></td>
-                  <td>₹ <%=(user_profile.subscription)/100%></td>
-                </tr>
-              </tfoot> -->
             </table>
           </div>
+        <%}%>
 
-        </section>
+        <%if(user.payment_records.length>0){%>
+          <section>
+            <header class="pad-top">
+              <h2>Payment history</h2>
+            </header>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>item</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(let i=0; i< user.payment_records.length ; i++){ %>
+                    <tr>
+                      <td class="font-wt-medium"><%=i+1%></td>
+                      <td class="font-wt-medium"><%= user.payment_records[i].title %></td>
+                      <td class="font-wt-medium"><%= user.payment_records[i].date %></td>
+                      <td class="font-wt-medium">₹ <%=(user.payment_records[i].amount)%></td>
+                    </tr>
+                  <%}%>
+                </tbody>
+                <!-- <tfoot>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td>₹ <%=(user.subscription)/100%></td>
+                  </tr>
+                </tfoot> -->
+              </table>
+            </div>
+
+          </section>
+        <%}%>
       </div>
     </div>
     <!-- Footer -->
@@ -135,21 +127,21 @@
             </div>
 
             <div class="col-3 col-12-xsmall pad-left">
-                <ul class="actions stacked">
-                    <li><a href=""><h1>Contact Us</h1></a></li>
-                    <li><a href=""><h1>About Us</h1></a></li>
-                    <li><a href=""><h1>Our Experts</h1></a></li>
-                    <li><a href=""><h1>Need Help?</h1></a></li>
-                </ul>
-            </div>
-            <div class="col-4 col-12-xsmall pad-left">
-                <ul class="actions stacked">
-                    <!-- <li><h4>OUR TERMS</h4></li> -->
-                    <li><a href=""><h1>Privacy Policy</h1></a></li>
-                    <li><a href=""><h1>Terms and conditions</h1></a></li>
-                    <li><a href=""><h1>Terms of service</h1></a></li>
-                </ul>
-            </div>
+							<ul class="actions stacked">
+								<li><a href=""><h3>Contact Us</h3></a></li>
+								<li><a href=""><h3>About Us</h3></a></li>
+								<li><a href=""><h3>Our Experts</h3></a></li>
+								<li><a href=""><h3>Need Help?</h3></a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-xsmall pad-left">
+							<ul class="actions stacked">
+								<!-- <li><h4>OUR TERMS</h4></li> -->
+								<li><a href=""><h3>Privacy Policy</h3></a></li>
+								<li><a href=""><h3>Terms and conditions</h3></a></li>
+								<li><a href=""><h3>Terms of service</h3></a></li>
+							</ul>
+						</div>
         </div>
         
         <div class="footer-social col-4 col-12-xsmall">
@@ -181,22 +173,3 @@
   <script src="/js/main.js"></script>
 </body>
 </html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Profile</h1>
-    <h2> <%=user_profile.name%> </h2>
-    <h2> <%=user_profile.email%> </h2>
-    <h2> <%= user_profile.name %> </h2>
-    <a href="/user/logout"> LOGOUT </a>
-    <a href="/user/change/password"> Change Password </a>
-</body>
-</html> -->

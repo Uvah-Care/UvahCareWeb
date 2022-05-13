@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/main.css">
+    <meta charset="UTF-8">
 		<script src="https://kit.fontawesome.com/e2cfeba165.js" crossorigin="anonymous"></script>
   </head>
    
@@ -22,59 +22,143 @@
           <li><a href="/about">About us</a></li>
           <li><a href="/contact">Contact us</a></li>
           <!-- <li><a href="./join.html" class="button primary">Join Us</a></li> -->
+          <%if(user){%>
+            <li><a href="/user/profile" class="button primary"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<%=user.name%></a></li>
+            <li><a href="/user/logout" class="button primary">Logout</a></li>
+          <%}else{%>
+            <li><a href="/user/signup" class="button primary">Join Us</a></li>
+            <li><a href="/user/signin" class="button primary">Login</a></li>
+          <%}%>
         </ul>
       </nav>
     </header>
 
     <div id="main" class="wrapper style3">
       <div class="container">
-        <header class="major">
-          <h2>Choose Subscription</h2>
+
+        <header class="major pad-top">
+          <h2>Subscription</h2>
           <p>Choose the subscription that best suits you</p>
         </header>
+
         <section>
-          <!-- <h3>Form</h3> -->
           <form action="/user/auth/signin/local" method="post">
-            <div class="row aln-center aln-middle gtr-uniform gtr-75">
-                <div class="col-6 col-12-xsmall">
-                    <ul class="actions fit">
-                        <li><a href="/subscribe/user-details/499" class="button primary fit pad-top">
-                            <h1><strong>Group of 20 Batch - Rs 499 only </strong></h1>
-                            ✔️Group Yoga Training <br>
-                            ✔️ Strength and Flexibility Training <br>
-                            ✔️ Meditation and Pranayama Session <br>
-                            <br>
-                            <br><br><br><br>
-                        </a></li>
-                        <li><a href="/subscribe/user-details/1999" class="button primary fit pad-top">
-                            <h1><strong>Group of 5 batch - Rs 1999 only</strong></h1>
-                            ✔️Personalized care and 1-1 attention from Experts<br>
-                            ✔️ Strength and Flexibility Training<br>
-                            ✔️Diet  Planner<br>
-                            ✔️Self Healing Sessions<br>
-                            ✔️ Meditation and Pranayama Session<br>
-                            ✔️ Chat / Call Support <br>
-                            ✔️ Disease specific Yoga ( Yoga Therapy)<br>
-                            ✔️On Demand Consultancy throughout the membership.<br>
-                        </a></li>
-                        <li><a href="/subscribe/user-details/2999" class="button primary fit pad-top">
-                            <h1><strong> 1-1 - Rs 2999 only </strong></h1>
-                            ✔️Group Yoga Training <br>
-                            ✔️ Strength and Flexibility Training <br>
-                            ✔️ Meditation and Pranayama Session <br>
-                            <br
-                            ><br><br><br><br>
-                        </a></li>
-                        
-                    </ul>
-                </div>
-                
-                
+            <div class="row gtr-uniform aln-center  gtr-75">
+              <!-- <div class="col-6 col-12-xsmall"> -->
+                <!-- <ul class="actions fit"> -->
+                  <div class="col-5 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-1" class="card-button">
+                      <h2><strong>Basic - Group of 20 Batch - Rs 699 only </strong></h2>
+                      ✔️5 days per week training sessions<br>
+                      ✔️Group Yoga Training<br>
+                      ✔️ Strength and Flexibility Training<br>
+                      ✔️ Meditation and Pranayama Session<br>
+                    </a>
+                  </div>
+                  <div class="col-5 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-2" class="card-button">
+                      <h2><strong>Medium - Group of 8 batch - Rs 1999 only</strong></h2>
+                      ✔️5 days per week training sessions<br>
+                      ✔️Personalized care and 1-1 attention from Experts<br>
+                      ✔️ Strength and Flexibility Training<br>
+                      ✔️ Meditation and Pranayama Session<br>
+                      ✔️ Immunity Build up<br>
+                      ✔️ Disease specific Yoga ( Yoga Therapy)<br>
+                      ✔️ Chat / Call Support <br>
+                      ✔️On Demand Consultancy throughout the membership.<br>
+                      ✔️Self Healing Sessions<br>
+                    </a>
+                  </div>
+                  <div class="col-8 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-3" class="card-button">
+                      <h2><strong> Weekend Yoga batch - Group of 8 - Rs 999 only </strong></h2>
+                      ✔️Practise Yoga at Non-Working days and Rejuvenate/Re-Energise for Next Week<br>
+                      ✔️Stress Release<br>
+                      ✔️Group Yoga Training<br> 
+                      ✔️ Strength and Flexibility Training<br>
+                      ✔️ Meditation and Pranayama Session<br>
+                    </a>
+                  </div>
+                  <div class="col-5 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-4" class="card-button">
+                      <h2><strong> Meditation sessions (5 days/week) - Rs 999 only  </strong></h2>
+                      ✔️ 30-45 min sessions><br>
+                      ✔️Stress Reduction><br>
+                      ✔️Anxiety Management><br>
+                      ✔️Increased Focus><br>
+                      ✔️Improvement in mental resilience><br>
+                      ✔️Daily Online Mindfulness Meditation ><br>
+                      ✔️ Weekly group discussions with Q&A on practice><br>
+                      ✔️ Daily tips on mindfulness and meditation><br>
+                    </a>
+                  </div>
+                  <div class="col-5 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-5" class="card-button">
+                      <h2><strong> Meditation sessions (weekends only) - Rs 499 only  </strong></h2>
+                      ✔️ 30-45 min sessions><br>
+                      ✔️Stress Reduction><br>
+                      ✔️Anxiety Management><br>
+                      ✔️Increased Focus><br>
+                      ✔️Improvement in mental resilience><br>
+                      ✔️Daily Online Mindfulness Meditation ><br>
+                      ✔️ Weekly group discussions with Q&A on practice><br>
+                      ✔️ Daily tips on mindfulness and meditation><br>
+                    </a>
+                  </div>
+                  <div class="col-12 col-12-xsmall align-center"> <h1 class="pad-top">Premium Plans</h1> </div>
+                  <div class="col-8 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-6" class="card-button">
+                      <h2><strong> One-one Yoga - (12 classes) - Rs 7999/month </strong></h2>
+                      ✔️Personalized care and 1-1 attention from Experts<br>
+                      ✔️ Strength and Flexibility Training<br>
+                      ✔️ Meditation and Pranayama Session<br>
+                      ✔️ Disease specific Yoga ( Yoga Therapy) <br>
+                      ✔️ Chat / Call Support <br>
+                      ✔️ On Demand Consultancy throughout the membership.<br>
+                      ✔️ Self Healing Sessions<br>
+                      ✔️ Inner Peace and Consciousness practice<br>
+                    </a>
+                  </div>
+                  <div class="col-8 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-7" class="card-button">
+                      <h2><strong>One-One Yoga+ diet consultation pack(12 classes + ayurvedic diet consultations) - Rs 9999/month</strong></h2>
+                      ✔️ Personalized Diet Planner from professional<br>
+                      ✔️Personalized care and 1-1 attention from Experts<br>
+                      ✔️ Diet planning by Ayurvedic Nutritionist<br>
+                      ✔️ Strength and Flexibility Training<br>
+                      ✔️ Meditation and Pranayama Session<br>
+                      ✔️ Disease specific Yoga ( Yoga Therapy)<br>
+                      ✔️ Chat / Call Support <br>
+                      ✔️ On Demand Consultancy throughout the membership.<br>
+                      ✔️ Self Healing Sessions<br>
+                      ✔️ Inner Peace and Consciousness practice<br>
+                    </a>
+                  </div>
+                  <div class="col-9 col-12-xsmall">
+                    <a href="/subscribe/user-details/sub-8" class="card-button">
+                      <h2><strong> one-One Yoga + diet consultation pack+ayurvedic Doctor's health Consultation (disease based full pack) - Rs 14999/month  </strong></h2>
+                      ✔️Unlimited  On Demand Ayurvedic doctor consultancies <br>
+                      ✔️Yoga sessions  <br>
+                      ✔️ Strength and Flexibility Training<br>
+                      ✔️ Meditation and Pranayama Session<br>
+                      ✔️ Disease specific Yoga ( Yoga Therapy)<br>
+                      ✔️ Diet planning by Ayurvedic Nutritionist<br>
+                      ✔️ Know your dosha , and heal<br>
+                      ✔️ Lifestyle Management <br>
+                      ✔️ Mindfulness /Spiritual Awakening Sessions<br>
+                      ✔️ Self Healing Sessions<br>
+                      ✔️ Inner Peace and Consciousness practice<br>
+                    </a>
+                  </div>
+                </ul>
+              </div>
             </div>
           </form>
-        </section>    
+        </section> 
+
       </div>
     </div>
+
     <!-- Footer -->
     <footer id="footer" class="row">
         <div class="col-8 col-12-xsmall row">
@@ -85,21 +169,21 @@
             </div>
 
             <div class="col-3 col-12-xsmall pad-left">
-                <ul class="actions stacked">
-                    <li><a href=""><h1>Contact Us</h1></a></li>
-                    <li><a href=""><h1>About Us</h1></a></li>
-                    <li><a href=""><h1>Our Experts</h1></a></li>
-                    <li><a href=""><h1>Need Help?</h1></a></li>
-                </ul>
-            </div>
-            <div class="col-4 col-12-xsmall pad-left">
-                <ul class="actions stacked">
-                    <!-- <li><h4>OUR TERMS</h4></li> -->
-                    <li><a href=""><h1>Privacy Policy</h1></a></li>
-                    <li><a href=""><h1>Terms and conditions</h1></a></li>
-                    <li><a href=""><h1>Terms of service</h1></a></li>
-                </ul>
-            </div>
+							<ul class="actions stacked">
+								<li><a href=""><h3>Contact Us</h3></a></li>
+								<li><a href=""><h3>About Us</h3></a></li>
+								<li><a href=""><h3>Our Experts</h3></a></li>
+								<li><a href=""><h3>Need Help?</h3></a></li>
+							</ul>
+						</div>
+						<div class="col-4 col-12-xsmall pad-left">
+							<ul class="actions stacked">
+								<!-- <li><h4>OUR TERMS</h4></li> -->
+								<li><a href=""><h3>Privacy Policy</h3></a></li>
+								<li><a href=""><h3>Terms and conditions</h3></a></li>
+								<li><a href=""><h3>Terms of service</h3></a></li>
+							</ul>
+						</div>
         </div>
         
         <div class="footer-social col-4 col-12-xsmall">

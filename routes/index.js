@@ -15,4 +15,10 @@ router.use('/subscribe', require('./subscribe'));
 // router.use('/join',require('./join'));
 // router.use('/login',require('./login'));
 
+router.use(
+    (req,res,next)=>{
+        res.status(404).render('404', {user: req.user});
+    }
+)
+
 module.exports = router; 

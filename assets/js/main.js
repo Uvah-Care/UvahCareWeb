@@ -7,8 +7,8 @@
 		breakpoints({
 			xlarge:   [ '1281px',  '1680px' ],
 			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
+			medium:   [ '821px',   '980px'  ],
+			small:    [ '481px',   '820px'  ],
 			xsmall:   [ null,      '480px'  ]
 		});
 
@@ -267,12 +267,12 @@
 		var slideUlWidth =  slideCount * slideWidth;
 		
 		$(".slider").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
-		$(".slider ul").css({"width":slideUlWidth, "margin-left": (- slideWidth + 25) });
+		$(".slider ul").css({"width":slideUlWidth + (40*slideCount) + 50, "margin-left": (- slideWidth - 60) });
 		$(".slider ul li:last-child").prependTo($(".slider ul"));
 		
 		function moveLeft() {
 			$(".slider ul").stop().animate(
-				{left: + slideWidth}
+				{left: + slideWidth+10}
 				,700
 				,function() {
 					$(".slider ul li:last-child").prependTo($(".slider ul"));
@@ -283,7 +283,7 @@
 		
 		function moveRight() {
 			$(".slider ul").stop().animate(
-				{left: - slideWidth}
+				{left: - slideWidth-10}
 				,700
 				,function() {
 					$(".slider ul li:first-child").appendTo($(".slider ul"));
@@ -300,6 +300,51 @@
 			moveLeft();
 		});
 		setInterval(function(){ 
-			moveRight();
-		}, 5000);//moves carossuel every 5 seconds	
+			// moveRight();
+		}, 5000);
+
+
+	//slider-2
+		var slideCount =  $(".car ul li").length;
+		var slideWidth =  $(".car ul li").width();
+		var slideHeight =  $(".car ul li").height();
+		var slideUlWidth =  slideCount * slideWidth;
+		
+		$(".car").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
+		$(".car ul").css({"width":(slideUlWidth+ 40*slideCount + 50), "margin-left": (- slideWidth - 60) });
+		$(".car ul li:last-child").prependTo($(".car ul"));
+		
+		function carmoveLeft() {
+			$(".car ul").stop().animate(
+				{left: + slideWidth+40}
+				,700
+				,function() {
+					$(".car ul li:last-child").prependTo($(".car ul"));
+					$(".car ul").css("left","");
+				}
+			);
+		}
+		
+		function carmoveRight() {
+			$(".car ul").stop().animate(
+				{left: - slideWidth-40}
+				,700
+				,function() {
+					$(".car ul li:first-child").appendTo($(".car ul"));
+					$(".car ul").css("left","");
+				}
+			);
+		}
+		
+		$(".carnext").on("click",function(){
+			carmoveRight();
+		});
+		
+		$(".carprev").on("click",function(){
+			carmoveLeft();
+		});
+		// setInterval(function(){ 
+		// 	carmoveRight();
+		// }, 5000);
+		//moves carossuel every 5 seconds	
 })(jQuery);
