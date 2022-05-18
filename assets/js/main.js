@@ -254,97 +254,264 @@
 
 			});
 
+	//experts carrousel
+		var $experts = $('.experts');
+
+		$experts
+			.each(function(){
+				var $this = $(this),
+					on, off;
+
+				on = function() {
+					$this.html(`	
+						<a href="#0" class="carnext car-control"> <i class="fa-solid fa-arrow-right-long"></i> </a>
+						<a href="#0" class="carprev car-control"> <i class="fa-solid fa-arrow-left-long"></i> </a>
+						<div class="car">
+							<ul>
+								<li>
+									<div class="align-center">
+										<span class="image round-avatar-image">
+											<img src="/images/expert-2.png" alt="">
+										</span>
+										<h3>A</h3>
+										<p><b>Experience:</b> +8 Years <br> <b>Specialization:</b> Fitness & Pregnancy Yoga <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+								</li>
+								<li>
+									<div class="align-center">
+										<span class="image round-avatar-image">
+											<img src="/images/expert-2.png" alt="">
+										</span>
+										<h3>B</h3>
+										<p><b>Experience:</b> +8 Years <br> <b>Specialization:</b> Fitness & Pregnancy Yoga <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+								</li>
+								<li>
+									<div class="align-center">
+										<span class="image round-avatar-image">
+											<img src="/images/expert-2.png" alt="">
+										</span>
+										<h3>C</h3>
+										<p><b>Experience:</b> +8 Years <br> <b>Specialization:</b> Fitness & Pregnancy Yoga <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+								</li>
+								<li>
+									<div class="align-center">
+										<span class="image round-avatar-image">
+											<img src="/images/expert-2.png" alt="">
+										</span>
+										<h3>D</h3>
+										<p><b>Experience:</b> +8 Years <br> <b>Specialization:</b> Fitness & Pregnancy Yoga <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+								</li>
+								<li>
+									<div class="align-center">
+										<span class="image round-avatar-image">
+											<img src="/images/expert-2.png" alt="">
+										</span>
+										<h3>E</h3>
+										<p><b>Experience:</b> +8 Years <br> <b>Specialization:</b> Fitness & Pregnancy Yoga <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+								</li>
+							</ul>
+							<div class="slider_option">
+								<Button class="btn">Autoplay</Button>
+							</div>
+						</div>
+						<script>
+							(function($){
+								var slideCount =  $(".car ul li").length;
+								var slideWidth =  $(".car ul li").width();
+								var slideHeight =  $(".car ul li").height();
+								var slideUlWidth =  slideCount * slideWidth;
+								
+								$(".car").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
+								$(".car ul").css({"width":(slideUlWidth+ 40*slideCount + 50), "margin-left": (- slideWidth - 60) });
+								$(".car ul li:last-child").prependTo($(".car ul"));
+								
+								function carmoveLeft() {
+									$(".car ul").stop().animate(
+										{left: + slideWidth+40}
+										,700
+										,function() {
+											$(".car ul li:last-child").prependTo($(".car ul"));
+											$(".car ul").css("left","");
+										}
+									);
+								}
+								
+								function carmoveRight() {
+									$(".car ul").stop().animate(
+										{left: - slideWidth-40}
+										,700
+										,function() {
+											$(".car ul li:first-child").appendTo($(".car ul"));
+											$(".car ul").css("left","");
+										}
+									);
+								}
+								
+								$(".carnext").on("click",function(){
+									carmoveRight();
+								});
+								
+								$(".carprev").on("click",function(){
+									carmoveLeft();
+								});
+								setInterval(function(){ 
+									carmoveRight();
+								}, 5000);
+								//moves carossuel every 5 seconds
+							})(jQuery);
+						</script>
+						`
+					);
+				}
+				off = function() {
+					$this.html( `<div class="row aln-center">
+									<div class="col-4 col-5-medium col-12-small">
+										<span class="image round-avatar-image">
+											<img src="/images/expert-1.png" alt="">
+										</span>
+										<h3>Shalini Sharma</h3>
+										<p><b>Experience:</b> +8 Years <br> <b>Specialization:</b> Fitness & Pregnancy Yoga <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+									<div class="col-4 col-5-medium col-12-small">										
+										<span class="image round-avatar-image">
+											<img src="/images/expert-2.png" alt="">
+										</span>
+										<h3>Dr. Reena Arora</h3>
+										<p><b>Experience:</b> +20 Years <br> <b>Specialization:</b> Ayurvedic Medicine <br> <b>Certification:</b> Morarji Desai National Institute of Yoga</p>
+									</div>
+									<div class="col-4 col-5-medium col-12-small">
+										<span class="image round-avatar-image">
+											<img src="./images/banner.jpg" alt="">
+										</span>
+										<h3>Cubilia cep lobortis</h3>
+										<p><b>Experience:</b> +15 Years <br> <b>Specialization:</b> Lorem ipsum dolor  <br> <b>Certification:</b> Lorem ipsum dolor sit amet consectetur </p>
+									</div>
+								</div>`
+					);
+				};
+
+				breakpoints.on('<=medium', off);
+				breakpoints.on('>medium', on);
+
+			});
+
 	// Banner.
 		var $banner = $('#banner');
 
 		$banner
 			._parallax();
 
-	// Slider.
-		var slideCount =  $(".slider ul li").length;
-		var slideWidth =  $(".slider ul li").width();
-		var slideHeight =  $(".slider ul li").height();
-		var slideUlWidth =  slideCount * slideWidth;
-		
-		$(".slider").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
-		$(".slider ul").css({"width":slideUlWidth + (40*slideCount) + 50, "margin-left": (- slideWidth - 60) });
-		$(".slider ul li:last-child").prependTo($(".slider ul"));
-		
-		function moveLeft() {
-			$(".slider ul").stop().animate(
-				{left: + slideWidth+10}
-				,700
-				,function() {
-					$(".slider ul li:last-child").prependTo($(".slider ul"));
-					$(".slider ul").css("left","");
+	// testimonials carrousel
+		var $testimonials = $('.testimonials-carrousel');
+		$testimonials
+			.each(function(){
+				var $this = $(this),
+				slides_3, slides_2, slides_1;
+				
+				var slideCount =  $(".slider ul li").length;
+				var slideWidth =  $(".slider ul li").width();
+				var slideHeight =  $(".slider ul li").height();
+				var slideUlWidth =  slideCount * slideWidth;
+
+				slides_3 = function(){
+					$(".slider").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
+					$(".slider ul").css({"width":slideUlWidth + (40*slideCount) + 50, "margin-left": (- slideWidth - 60) });
 				}
-			);
-		}
-		
-		function moveRight() {
-			$(".slider ul").stop().animate(
-				{left: - slideWidth-10}
-				,700
-				,function() {
-					$(".slider ul li:first-child").appendTo($(".slider ul"));
-					$(".slider ul").css("left","");
+				slides_2 = function(){
+					$(".slider").css({"max-width":(2*slideWidth + 80), "height": slideHeight});
+					$(".slider ul").css({"width":slideUlWidth + (40*slideCount) + 50, "margin-left": (- slideWidth - 60) });
 				}
-			);
-		}
-		
-		$(".next").on("click",function(){
-			moveRight();
-		});
-		
-		$(".prev").on("click",function(){
-			moveLeft();
-		});
-		setInterval(function(){ 
-			// moveRight();
-		}, 5000);
+				slides_1 = function(){
+					$(".slider").css({"max-width":(1*slideWidth + 44 ), "height": slideHeight});
+					$(".slider ul").css({"width":slideUlWidth + (40*slideCount) + 50, "margin-left": (- slideWidth - 36) });	
+				}
+				$(".slider ul li:last-child").prependTo($(".slider ul"));
+				
+				breakpoints.on('>small', slides_2);
+				breakpoints.on('<=small', slides_1);
+				breakpoints.on('>medium', slides_3);
+
+				function moveLeft() {
+					$(".slider ul").stop().animate(
+						{left: + slideWidth+40}
+						,700
+						,function() {
+							$(".slider ul li:last-child").prependTo($(".slider ul"));
+							$(".slider ul").css("left","");
+						}
+					);
+				}
+				
+				function moveRight() {
+					$(".slider ul").stop().animate(
+						{left: - slideWidth-40}
+						,700
+						,function() {
+							$(".slider ul li:first-child").appendTo($(".slider ul"));
+							$(".slider ul").css("left","");
+						}
+					);
+				}
+				
+				$(".next").on("click",function(){
+					moveRight();
+				});
+				
+				$(".prev").on("click",function(){
+					moveLeft();
+				});
+				setInterval(function(){ 
+					// moveRight();
+				}, 5000);
+				
+			});
 
 
 	//slider-2
-		var slideCount =  $(".car ul li").length;
-		var slideWidth =  $(".car ul li").width();
-		var slideHeight =  $(".car ul li").height();
-		var slideUlWidth =  slideCount * slideWidth;
-		
-		$(".car").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
-		$(".car ul").css({"width":(slideUlWidth+ 40*slideCount + 50), "margin-left": (- slideWidth - 60) });
-		$(".car ul li:last-child").prependTo($(".car ul"));
-		
-		function carmoveLeft() {
-			$(".car ul").stop().animate(
-				{left: + slideWidth+40}
-				,700
-				,function() {
-					$(".car ul li:last-child").prependTo($(".car ul"));
-					$(".car ul").css("left","");
-				}
-			);
-		}
-		
-		function carmoveRight() {
-			$(".car ul").stop().animate(
-				{left: - slideWidth-40}
-				,700
-				,function() {
-					$(".car ul li:first-child").appendTo($(".car ul"));
-					$(".car ul").css("left","");
-				}
-			);
-		}
-		
-		$(".carnext").on("click",function(){
-			carmoveRight();
-		});
-		
-		$(".carprev").on("click",function(){
-			carmoveLeft();
-		});
-		// setInterval(function(){ 
-		// 	carmoveRight();
-		// }, 5000);
-		//moves carossuel every 5 seconds	
+		// 	var slideCount =  $(".car ul li").length;
+		// 	var slideWidth =  $(".car ul li").width();
+		// 	var slideHeight =  $(".car ul li").height();
+		// 	var slideUlWidth =  slideCount * slideWidth;
+			
+		// 	$(".car").css({"max-width":(3*slideWidth + 75), "height": slideHeight});
+		// 	$(".car ul").css({"width":(slideUlWidth+ 40*slideCount + 50), "margin-left": (- slideWidth - 60) });
+		// 	$(".car ul li:last-child").prependTo($(".car ul"));
+			
+		// 	function carmoveLeft() {
+		// 		$(".car ul").stop().animate(
+		// 			{left: + slideWidth+40}
+		// 			,700
+		// 			,function() {
+		// 				$(".car ul li:last-child").prependTo($(".car ul"));
+		// 				$(".car ul").css("left","");
+		// 			}
+		// 		);
+		// 	}
+			
+		// 	function carmoveRight() {
+		// 		$(".car ul").stop().animate(
+		// 			{left: - slideWidth-40}
+		// 			,700
+		// 			,function() {
+		// 				$(".car ul li:first-child").appendTo($(".car ul"));
+		// 				$(".car ul").css("left","");
+		// 			}
+		// 		);
+		// 	}
+			
+		// 	$(".carnext").on("click",function(){
+		// 		carmoveRight();
+		// 	});
+			
+		// 	$(".carprev").on("click",function(){
+		// 		carmoveLeft();
+		// 	});
+		// 	setInterval(function(){ 
+		// 		carmoveRight();
+		// 	}, 5000);
+			//moves carossuel every 5 seconds	
 })(jQuery);
