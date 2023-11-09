@@ -8,7 +8,7 @@ const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 const app = express() //launching the server
 
 app.use(express.json()) // middleware:->parses incomming json request to req.body
